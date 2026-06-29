@@ -35,6 +35,7 @@ group :development, :test do
   gem "minitest"
   gem "minitest-reporters"
   gem "guard"
+  gem "listen"
   gem "guard-minitest"
 end
 
