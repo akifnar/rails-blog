@@ -23,14 +23,14 @@ group :production do
   gem "pg", "~> 1.5"
 end
 
-# Geliştirme ve Ortak Test Ortamı (sqlite3 buraya taşındı, yukarıdan silindi!)
+# Geliştirme ve Ortak Test Ortamı
 group :development, :test do
   gem "sqlite3", ">= 1.4"
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
 
-  # Kitapta kullanılan ekstra test araçları (Sürüm uyumsuzluğu olmaması için versiyonsuz eklendi)
+  # Kitapta kullanılan ekstra test araçları (Tek bir yerde toplandı, kopyaları silindi!)
   gem "rails-controller-testing"
   gem "minitest"
   gem "minitest-reporters"
@@ -47,8 +47,4 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
-  gem "rails-controller-testing"
-  gem "minitest-reporters"
-  gem "guard"
-  gem "guard-minitest"
 end
