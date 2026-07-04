@@ -1,0 +1,20 @@
+<header
+  class="fixed top-0 left-0 right-0 bg-slate-900 text-white z-50 shadow-md"
+>
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+
+    <%= link_to "sample app",
+    root_path,
+    id: "logo",
+    class: "text-xl font-bold tracking-wider hover:text-slate-300 transition" %>
+
+    <nav>
+      <ul class="flex items-center gap-6 font-medium text-slate-200">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Help", help_path %></li>
+        <li><%= link_to "Log in", "#" %></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
