@@ -1,12 +1,18 @@
-<footer class="footer">
-  <small>
-    The Sample App by akif nar
+<footer class="mt-16 pt-6 border-t border-stone-200 text-stone-500 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm pb-8">
+  <small class="font-medium tracking-wide">
+    The Sample App
   </small>
   <nav>
-    <ul>
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
-      <li><a href="https://github.com/akifnar">Github Profile</a></li>
+    <ul class="flex items-center gap-6 list-none p-0 m-0">
+      <li>
+        <%= link_to "About", about_path, class: "text-stone-500 hover:text-stone-900 transition duration-200 no-underline font-medium" %>
+      </li>
+      <li>
+        <%= link_to "Contact", contact_path, class: "text-stone-500 hover:text-stone-900 transition duration-200 no-underline font-medium" %>
+      </li>
+      <li>
+        <a href="https://github.com/akifnar" class="text-stone-500 hover:text-stone-900 transition duration-200 no-underline font-medium">Github Profile</a>
+      </li>
     </ul>
   </nav>
 </footer>
