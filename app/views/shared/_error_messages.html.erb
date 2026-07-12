@@ -1,7 +1,7 @@
 <% if @user.errors.any? %>
-  <div class="w-full rounded-xl border-l-4 border-stone-600 bg-stone-100 p-4 text-sm shadow-sm mb-4">
+  <div id="err_messages" class="w-full rounded-xl border-l-4 border-stone-600 bg-stone-100 p-4 text-sm shadow-sm mb-4">
     <div class="font-bold text-stone-800 mb-2">
-      Form <%= pluralize(@user.errors.count, "hata") %> içeriyor:
+      The form contains <%= pluralize(@user.errors.count, "error") %>:
     </div>
     <ul class="list-none space-y-1.5 text-stone-600">
       <% @user.errors.full_messages.each do |msg| %>

@@ -1,74 +1,14 @@
+/*noinspection CssUnknownTarget*/
 @import "tailwindcss";
-
+@source "../../views/**/*.html.erb";
+@source "../../helpers/**/*.rb";
 @theme {
   --color-light-gray: #777;
   --color-medium-light: #eaeaea;
 }
 
-body {
-  @apply pt-[60px];
+.debug_dump {
+  @apply clear-both float-left w-full mt-[45px] bg-red-100 border border-red-400 text-red-700 p-4 rounded;
 }
 
-section {
-  @apply overflow-auto;
-}
 
-textarea {
-  @apply resize-y;
-}
-
-.center {
-  @apply text-center;
-
-  h1 {
-    @apply mb-[10px];
-  }
-}
-
-h1, h2, h3, h4, h5, h6 {
-  @apply leading-none;
-}
-
-h1 {
-  @apply text-[3em] tracking-[-2px] mb-[30px] text-center;
-}
-
-h2 {
-  @apply text-[1.2em] tracking-[-1px] mb-[30px] text-center font-normal text-light-gray;
-}
-
-p {
-  @apply text-[1.1em] leading-[1.7em];
-}
-
-#logo {
-  @apply float-left mr-[10px] text-[1.7em] text-[#fff] uppercase tracking-[-1px] pt-[9px] font-bold;
-
-  &:hover {
-    @apply text-[#fff] no-underline;
-  }
-}
-
-footer {
-   @apply mt-[45px] pt-[5px] border-t border-medium-light text-light-gray;
-
-  a {
-    @apply text-[#555];
-
-    &:hover {
-      @apply text-[#222];
-    }
-  }
-
-  small {
-    @apply float-left;
-  }
-
-  ul {
-    @apply float-right list-none;
-
-    li {
-      @apply float-left ml-[15px];
-    }
-  }
-}

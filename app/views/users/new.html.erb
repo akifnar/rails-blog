@@ -1,53 +1,58 @@
 <% provide(:title, "Sign up") %>
-<div class="flex flex-col items-center justify-center min-h-[60vh] px-4 mt-8">
-  <div class="w-full max-w-sm bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.03)] border border-stone-100">
+<div class="flex flex-col items-center justify-center min-h-[75vh] px-4 mt-12 mb-16">
+  <div class="w-full max-w-2xl bg-white p-10 md:p-12 rounded-2xl shadow-[0_8px_40px_rgb(0,0,0,0.015)] border border-stone-100/90">
 
-    <h1 class="text-xl font-bold tracking-tight text-stone-900 text-center mb-8">
-      Sign up
+    <h1 class="text-3xl font-black tracking-tight text-stone-900 text-center mb-2">
+      Create your account
     </h1>
+    <%= form_with(model: @user, class: "space-y-6") do |f| %>
 
-    <%= form_with(model: @user, class: "space-y-5") do |f| %>
+      <% if @user.errors.any? %>
+        <div class="mb-4">
+          <%= render "shared/error_messages" %>
+        </div>
+      <% end %>
 
-      <div>
-        <%= render "shared/error_messages" %>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+
+        <div>
+          <%= f.label :name,
+                      class: "block text-[11px] font-bold text-stone-400 uppercase tracking-widest mb-2" %>
+          <%= f.text_field :name,
+                           placeholder: "John Doe",
+                           class: "w-full rounded-xl px-4 py-3.5 text-base bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-stone-900/10 border border-stone-200/40 focus:border-stone-300 transition duration-200" %>
+        </div>
+
+        <div>
+          <%= f.label :email,
+                      class: "block text-[11px] font-bold text-stone-400 uppercase tracking-widest mb-2" %>
+          <%= f.email_field :email,
+                            placeholder: "example@domain.com",
+                            class: "w-full rounded-xl px-4 py-3.5 text-base bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-stone-900/10 border border-stone-200/40 focus:border-stone-300 transition duration-200" %>
+        </div>
+
+        <div>
+          <%= f.label :password,
+                      class: "block text-[11px] font-bold text-stone-400 uppercase tracking-widest mb-2" %>
+          <%= f.password_field :password,
+                               placeholder: "••••••••",
+                               class: "w-full rounded-xl px-4 py-3.5 text-base bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-stone-900/10 border border-stone-200/40 focus:border-stone-300 transition duration-200" %>
+        </div>
+
+        <div>
+          <%= f.label :password_confirmation,
+                      "Confirmation",
+                      class: "block text-[11px] font-bold text-stone-400 uppercase tracking-widest mb-2" %>
+          <%= f.password_field :password_confirmation,
+                               placeholder: "••••••••",
+                               class: "w-full rounded-xl px-4 py-3.5 text-base bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-stone-900/10 border border-stone-200/40 focus:border-stone-300 transition duration-200" %>
+        </div>
+
       </div>
 
-      <div>
-        <%= f.label :name,
-                    class: "block text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1.5" %>
-        <%= f.text_field :name,
-                         placeholder: "John Doe",
-                         class: "w-full rounded-xl px-4 py-3 text-sm bg-stone-100 text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-stone-900/10 border border-transparent focus:border-stone-200 transition duration-200" %>
-      </div>
-
-      <div>
-        <%= f.label :email,
-                    class: "block text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1.5" %>
-        <%= f.email_field :email,
-                          placeholder: "example@domain.com",
-                          class: "w-full rounded-xl px-4 py-3 text-sm bg-stone-100 text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-stone-900/10 border border-transparent focus:border-stone-200 transition duration-200" %>
-      </div>
-
-      <div>
-        <%= f.label :password,
-                    class: "block text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1.5" %>
-        <%= f.password_field :password,
-                             placeholder: "••••••••",
-                             class: "w-full rounded-xl px-4 py-3 text-sm bg-stone-100 text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-stone-900/10 border border-transparent focus:border-stone-200 transition duration-200" %>
-      </div>
-
-      <div>
-        <%= f.label :password_confirmation,
-                    "Confirmation",
-                    class: "block text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1.5" %>
-        <%= f.password_field :password_confirmation,
-                             placeholder: "••••••••",
-                             class: "w-full rounded-xl px-4 py-3 text-sm bg-stone-100 text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-stone-900/10 border border-transparent focus:border-stone-200 transition duration-200" %>
-      </div>
-
-      <div class="pt-6">
-        <%= f.submit "REGISTER",
-                     class: "w-full bg-stone-900 hover:bg-stone-800 text-stone-100 font-bold text-xs uppercase tracking-[0.2em] py-4 px-4 rounded-xl cursor-pointer shadow-md hover:shadow-lg transition duration-200 text-center block active:scale-[0.99]" %>
+      <div class="pt-6 flex justify-center">
+        <%= f.submit "Register Now",
+                     class: "w-full md:max-w-xs bg-stone-900 hover:bg-stone-800 text-stone-100 font-bold text-sm tracking-wide py-4 px-8 rounded-xl cursor-pointer shadow-md hover:shadow-lg transition duration-200 text-center block active:scale-[0.99]" %>
       </div>
 
     <% end %>

@@ -1,8 +1,10 @@
 services:
   web:
     build: .
+    tty: true
+    stdin_open: true
     volumes:
-      - .:/rails # Kodun tamamını bağla
+      - .:/rails
       - ./log:/rails/log
       - ./storage:/rails/storage
     ports:

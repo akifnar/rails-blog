@@ -2,14 +2,25 @@
 <html>
 
   <%= render "layouts/head" %>
-
-  <body class="bg-gray-50 text-gray-900 pt-[60px]">
-    <%= render "layouts/header" %>
-    <main class="max-w-6xl mx-auto px-4 pt-24 pb-12">
+  <body class="bg-stone-50 text-stone-900 antialiased pt-[60px]">
+  <%= render "layouts/header" %>
+    <main class="max-w-6xl mx-auto px-4 pt-12 pb-16">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message,
+                        class:
+                          "alert-#{message_type} mb-8 p-5 rounded-xl bg-stone-900 text-stone-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] border border-transparent text-sm font-black tracking-tight uppercase")
+        %>
+      <% end %>
       <%= yield %>
       <%= render "layouts/footer" %>
-      <%= debug(params) if Rails.env.development? %>
+      <% if Rails.env.development? %>
+        <div class="mt-16 p-6 bg-stone-100/80 border border-stone-200/60 rounded-2xl text-xs font-mono text-stone-600 max-w-full overflow-x-auto shadow-inner">
+          <div class="font-bold uppercase tracking-wider text-stone-400 mb-2 text-[10px]">
+            Development Debug Console
+          </div>
+          <%= debug(params) %>
+        </div>
+      <% end %>
     </main>
   </body>
-
 </html>
