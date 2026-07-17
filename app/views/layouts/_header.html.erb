@@ -5,17 +5,51 @@
                 root_path,
                 class: "text-2xl font-black tracking-tighter uppercase text-white hover:text-stone-300 transition duration-200 no-underline" %>
 
-    <nav>
-      <ul class="flex items-center gap-6 text-sm font-semibold tracking-wide uppercase">
+    <nav class="flex items-center">
+      <div class="md:hidden flex items-center">
+        <button id="hamburger" type="button" class="flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none group">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="w-6 h-0.5 bg-stone-300 group-hover:bg-amber-500 transition duration-300"></span>
+          <span class="w-6 h-0.5 bg-stone-300 group-hover:bg-amber-500 transition duration-300"></span>
+          <span class="w-6 h-0.5 bg-stone-300 group-hover:bg-amber-500 transition duration-300"></span>
+        </button>
+      </div>
+
+      <ul id="navbar-menu" class="hidden absolute top-16 left-0 right-0 bg-stone-900 border-b border-stone-800 p-6 flex-col gap-4 md:static md:bg-transparent md:border-none md:p-0 md:flex md:flex-row md:items-center md:gap-6 text-sm font-semibold tracking-wide uppercase z-40">
         <li>
-          <%= link_to "Home", root_path, class: "text-stone-300 hover:text-white transition duration-200 no-underline" %>
+          <%= link_to "Home", root_path, class: "text-stone-300 hover:text-white transition duration-200 no-underline block py-2 md:py-0" %>
         </li>
         <li>
-          <%= link_to "Help", help_path, class: "text-stone-300 hover:text-white transition duration-200 no-underline" %>
+          <%= link_to "Help", help_path, class: "text-stone-300 hover:text-white transition duration-200 no-underline block py-2 md:py-0" %>
         </li>
-        <li>
-          <%= link_to "Log in", "#", class: "text-stone-300 hover:text-white transition duration-200 no-underline" %>
-        </li>
+        <% if logged_in? %>
+          <li>
+            <%= link_to "Users", '#', class: "text-stone-300 hover:text-white transition duration-200 no-underline block py-2 md:py-0" %>
+          </li>
+          <li class="relative group py-2 md:py-5">
+            <%= link_to '#', id: "account", class: "text-stone-300 hover:text-white transition duration-200 no-underline flex items-center gap-1.5" do %>
+              Account
+              <span class="inline-block text-[10px] transform group-hover:translate-y-1 transition-transform duration-500 ease-out">▼</span>
+            <% end %>
+            <div id="dropdown-menu" class="hidden md:block md:absolute md:right-0 md:top-full pt-1 md:opacity-0 md:invisible md:translate-y-2 md:group-hover:opacity-100 md:group-hover:visible md:group-hover:translate-y-0 transition-all duration-500 ease-out will-change-transform z-50">
+              <ul class="w-full md:w-44 bg-stone-900 md:bg-stone-900/95 md:backdrop-blur-md md:border md:border-stone-800 rounded-lg md:shadow-2xl py-2 mt-2 md:mt-0">
+                <li class="px-4 py-2 hover:bg-stone-800/60 transition duration-150">
+                  <%= link_to "Profile", current_user, class: "text-stone-300 hover:text-white transition duration-200 no-underline" %>
+                </li>
+                <li class="px-4 py-2 hover:bg-stone-800/60 transition duration-150 border-t border-stone-800/40">
+                  <%= link_to "Settings", '#', class: "text-stone-300 hover:text-white transition duration-200 no-underline" %>
+                </li>
+                <li class="px-4 py-2 hover:bg-stone-800/60 transition duration-150 border-t border-stone-800/40">
+                  <%= link_to "Log out", logout_path, data: { "turbo-method": :delete }, class: "text-stone-300 hover:text-white transition duration-200 no-underline" %>
+                </li>
+              </ul>
+            </div>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Log in", login_path, class: "text-stone-300 hover:text-white transition duration-200 no-underline block py-2 md:py-0" %>
+          </li>
+        <% end %>
       </ul>
     </nav>
 

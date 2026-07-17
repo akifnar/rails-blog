@@ -6,9 +6,19 @@
   <%= render "layouts/header" %>
     <main class="max-w-6xl mx-auto px-4 pt-12 pb-16">
       <% flash.each do |message_type, message| %>
+        <%
+          bg_style = case message_type.to_s
+                     when 'notice', 'success'
+                       "bg-emerald-600 text-emerald-50 border-emerald-500 shadow-emerald-900/20"
+                     when 'alert', 'danger', 'error'
+                       "bg-rose-600 text-rose-50 border-rose-500 shadow-rose-900/20"
+                     else
+                       "bg-stone-900 text-stone-50 border-stone-800 shadow-stone-950/30"
+                     end
+        %>
+
         <%= content_tag(:div, message,
-                        class:
-                          "alert-#{message_type} mb-8 p-5 rounded-xl bg-stone-900 text-stone-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] border border-transparent text-sm font-black tracking-tight uppercase")
+                        class: "mb-6 p-5 rounded-2xl border shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] text-sm font-black tracking-wider uppercase flex items-center justify-center text-center gap-3 animate-in fade-in slide-in-from-top-4 duration-300 #{bg_style}")
         %>
       <% end %>
       <%= yield %>
