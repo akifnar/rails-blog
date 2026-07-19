@@ -28,6 +28,22 @@
 
       </div>
 
+      <div class="flex items-center space-x-3 pt-2">
+        <div class="inline-flex items-center cursor-pointer select-none group">
+          <%= f.check_box :remember_me,
+                          class: "peer appearance-none w-5 h-5 rounded-md border border-stone-300 bg-stone-50 cursor-pointer
+                checked:bg-stone-900 checked:border-stone-900
+                focus:outline-none focus:ring-2 focus:ring-stone-950/10 focus:ring-offset-2
+                transition-all duration-200 relative
+                after:content-[''] after:absolute after:hidden peer-checked:after:block
+                after:left-[6px] after:top-[2px] after:w-[6px] after:h-[10px]
+                after:border-white after:border-r-2 after:border-b-2 after:rotate-45" %>
+
+          <%= f.label :remember_me, "Remember me on this computer",
+                      class: "ml-3 text-sm font-medium text-stone-500 group-hover:text-stone-800 cursor-pointer transition duration-200" %>
+        </div>
+      </div>
+
       <div class="pt-6 flex flex-col items-center gap-6">
         <%= f.submit "Log in",
                      class: "w-full md:max-w-xs bg-stone-900 hover:bg-stone-800 text-stone-100 font-bold text-sm tracking-wider uppercase py-4 px-8 rounded-xl cursor-pointer shadow-md hover:shadow-lg transition duration-200 text-center block active:scale-[0.99]" %>
