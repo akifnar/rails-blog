@@ -35,7 +35,7 @@ class ValidLogin < UsersLogin
   def setup
     super
     post login_path, params: { session: { email: @user.email,
-                                          password:'password'} }
+                                          password:'password123'} }
   end
 end
 
@@ -99,4 +99,3 @@ class RememberingTest < UsersLogin
     assert_empty cookies[:remember_token]
   end
 end
-

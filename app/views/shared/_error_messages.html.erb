@@ -1,16 +1,16 @@
-<% if @user.errors.any? %>
-  <div id="err_messages" class="w-full rounded-2xl border-l-[6px] border-amber-500 bg-stone-900 p-6 text-sm shadow-[0_10px_30px_rgba(0,0,0,0.15)] mb-6 border border-stone-800 animate-in fade-in slide-in-from-top-2 duration-300">
+<% if user.errors.any? %>
+  <div id="error_explanation" class="w-full bg-stone-50 border border-stone-200 rounded p-5 mb-6 animate-in fade-in slide-in-from-top-2 duration-300">
 
-    <div class="font-black tracking-wider uppercase text-amber-500 text-xs mb-3 flex items-center gap-2">
-      <span class="inline-block w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-      The form contains <%= pluralize(@user.errors.count, "error") %>
+    <div class="flex items-center gap-2 mb-3 text-[10px] font-bold uppercase tracking-widest text-stone-950 select-none">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-stone-950 animate-pulse"></span>
+      The form contains <%= pluralize(user.errors.count, "error") %>
     </div>
 
-    <ul class="list-none space-y-2 text-stone-200 font-medium">
-      <% @user.errors.full_messages.each do |msg| %>
-        <li class="flex items-start gap-3">
-          <span class="text-amber-500/70 select-none font-black">—</span>
-          <span class="tracking-tight"><%= msg %></span>
+    <ul class="space-y-2 text-xs font-light tracking-wide text-stone-600">
+      <% user.errors.full_messages.each do |msg| %>
+        <li class="flex items-start gap-2.5">
+          <span class="text-stone-400 select-none font-normal">—</span>
+          <span class="leading-relaxed"><%= msg %></span>
         </li>
       <% end %>
     </ul>

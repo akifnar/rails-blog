@@ -17,6 +17,8 @@ gem "tailwindcss-rails", "~> 4.4"
 gem "sqlite3", ">= 1.4"
 gem "image_processing", "~> 1.2"
 gem "activemodel-serializers-xml"
+gem 'faker'
+gem 'will_paginate', '~> 4.0'
 
 # WebSocket (Action Cable) için Redis bağımlılığı
 gem "redis", ">= 4.0.1"
@@ -50,6 +52,7 @@ end
 group :development do
   gem "web-console"
   gem "guard-livereload" # Sadece tarayıcıyı yenileyeceği için development yeterli
+  gem "solargraph"
 end
 
 # SADECE TEST ORTAMI

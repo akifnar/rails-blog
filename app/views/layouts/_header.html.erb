@@ -24,7 +24,7 @@
         </li>
         <% if logged_in? %>
           <li>
-            <%= link_to "Users", '#', class: "text-stone-300 hover:text-white transition duration-200 no-underline block py-2 md:py-0" %>
+            <%= link_to "Users", users_path, class: "text-stone-300 hover:text-white transition duration-200 no-underline block py-2 md:py-0" %>
           </li>
           <li class="relative group py-2 md:py-5">
             <%= link_to '#', id: "account", class: "text-stone-300 hover:text-white transition duration-200 no-underline flex items-center gap-1.5" do %>
@@ -37,7 +37,7 @@
                   <%= link_to "Profile", current_user, class: "text-stone-300 hover:text-white transition duration-200 no-underline" %>
                 </li>
                 <li class="px-4 py-2 hover:bg-stone-800/60 transition duration-150 border-t border-stone-800/40">
-                  <%= link_to "Settings", '#', class: "text-stone-300 hover:text-white transition duration-200 no-underline" %>
+                  <%= link_to "Settings", edit_user_path(current_user), class: "text-stone-300 hover:text-white transition duration-200 no-underline" %>
                 </li>
                 <li class="px-4 py-2 hover:bg-stone-800/60 transition duration-150 border-t border-stone-800/40">
                   <%= link_to "Log out", logout_path, data: { "turbo-method": :delete }, class: "text-stone-300 hover:text-white transition duration-200 no-underline" %>

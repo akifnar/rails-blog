@@ -1,0 +1,29 @@
+<% provide(:title, 'All users') %>
+
+<div class="min-h-screen bg-stone-50 py-16 px-4 sm:px-6 lg:px-8 font-sans antialiased text-stone-900">
+  <div class="max-w-2xl mx-auto">
+
+    <div class="mb-8 text-center sm:text-left flex flex-col sm:flex-row sm:items-end justify-between border-b border-stone-200/60 pb-5">
+      <div>
+        <h1 class="text-2xl font-light tracking-tight text-stone-950">All users</h1>
+        <p class="mt-1 text-xs text-stone-500 font-light tracking-wide">Browse and connect with registered members</p>
+      </div>
+      <span class="mt-3 sm:mt-0 inline-block text-[10px] font-bold uppercase tracking-widest text-stone-400">
+        Community
+      </span>
+    </div>
+
+    <div class="my-6 flex justify-center [&_.pagination]:flex [&_.pagination]:items-center [&_.pagination]:gap-1 [&_.pagination_a]:px-3 [&_.pagination_a]:py-1.5 [&_.pagination_a]:text-xs [&_.pagination_a]:font-medium [&_.pagination_a]:text-stone-600 [&_.pagination_a]:bg-white [&_.pagination_a]:border [&_.pagination_a]:border-stone-200 [&_.pagination_a]:rounded-md [&_.pagination_a]:transition-colors [&_.pagination_a:hover]:bg-stone-100 [&_.pagination_a:hover]:text-stone-900 [&_.current]:px-3 [&_.current]:py-1.5 [&_.current]:text-xs [&_.current]:font-semibold [&_.current]:text-stone-900 [&_.current]:bg-stone-200/70 [&_.current]:border [&_.current]:border-stone-300 [&_.current]:rounded-md [&_.disabled]:opacity-40 [&_.disabled]:pointer-events-none">
+      <%= will_paginate %>
+    </div>
+
+    <ul class="space-y-3">
+      <%= render @users %>
+    </ul>
+
+    <div class="mt-8 flex justify-center [&_.pagination]:flex [&_.pagination]:items-center [&_.pagination]:gap-1 [&_.pagination_a]:px-3 [&_.pagination_a]:py-1.5 [&_.pagination_a]:text-xs [&_.pagination_a]:font-medium [&_.pagination_a]:text-stone-600 [&_.pagination_a]:bg-white [&_.pagination_a]:border [&_.pagination_a]:border-stone-200 [&_.pagination_a]:rounded-md [&_.pagination_a]:transition-colors [&_.pagination_a:hover]:bg-stone-100 [&_.pagination_a:hover]:text-stone-900 [&_.current]:px-3 [&_.current]:py-1.5 [&_.current]:text-xs [&_.current]:font-semibold [&_.current]:text-stone-900 [&_.current]:bg-stone-200/70 [&_.current]:border [&_.current]:border-stone-300 [&_.current]:rounded-md [&_.disabled]:opacity-40 [&_.disabled]:pointer-events-none">
+      <%= will_paginate %>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<li class="bg-white border border-stone-200/60 rounded-lg p-4 shadow-sm hover:border-stone-300 transition-all duration-200">
+  <div class="flex items-center gap-4">
+
+    <div class="w-12 h-12 bg-stone-100 rounded-full border border-stone-200/80 shadow-inner overflow-hidden shrink-0 flex items-center justify-center [&>img]:w-full [&>img]:h-full [&>img]:object-cover [&>img]:rounded-full">
+      <%= gravatar_for user, size: 50 %>
+    </div>
+
+    <div class="grow min-w-0">
+      <%= link_to user.name, user, class: "text-sm font-medium text-stone-900 hover:text-stone-600 transition-colors duration-150 truncate block" %>
+      <p class="text-[10px] font-bold uppercase tracking-widest text-stone-400 mt-0.5">Member</p>
+    </div>
+
+    <% if current_user.admin? && !current_user?(user) %>
+      <%= link_to "delete", user,
+                            data: { "turbo-method": :delete, turbo_confirm: "You sure?" } %>
+      <% end %>
+
+  </div>
+</li>
