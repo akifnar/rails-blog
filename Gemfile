@@ -32,13 +32,13 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Boot Hızlandırıcı (Docker'da kilitlenmeye sebep olabileceği için geçici olarak devre dışı bırakıldı)
 gem "bootsnap", require: false
 
+gem "rails-controller-testing"
 
 # GELİŞTİRME VE TEST ORTAMI (ORTAK)
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
-  gem "rails-controller-testing"
   # Kitabın renkli test çıktıları için aradığı eksik gem:
   gem "minitest-reporters"
 
