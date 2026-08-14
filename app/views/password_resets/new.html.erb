@@ -1,0 +1,36 @@
+<% provide(:title, "Forgot password") %>
+<div class="flex flex-col items-center justify-center min-h-[75vh] px-4 mt-12 mb-16 animate-in fade-in duration-500">
+  <div class="w-full max-w-2xl bg-white p-10 md:p-12 rounded-3xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.03)] border border-stone-100">
+
+    <h1 class="text-3xl font-black tracking-tight text-stone-900 text-center mb-10">
+      Forgot password
+    </h1>
+
+    <%= form_with(url: password_resets_path, scope: :password_reset, class: "space-y-6") do |f| %>
+
+      <div class="grid grid-cols-1 gap-y-5">
+        <div>
+          <%= f.label :email,
+                      class: "block text-[11px] font-bold text-stone-400 uppercase tracking-widest mb-2" %>
+          <%= f.email_field :email,
+                            placeholder: "akif@example.com",
+                            class: "w-full rounded-xl px-4 py-3.5 text-base bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-stone-900/10 border border-stone-200/40 focus:border-stone-300 transition duration-200" %>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col items-center gap-6">
+        <%= f.submit "Submit",
+                     class: "w-full md:max-w-xs bg-stone-900 hover:bg-stone-800 text-stone-100 font-bold text-sm tracking-wider uppercase py-4 px-8 rounded-xl cursor-pointer shadow-md hover:shadow-lg transition duration-200 text-center block active:scale-[0.99]" %>
+
+        <div class="w-full border-t border-stone-100 pt-6 text-center">
+          <p class="text-xs font-medium text-stone-400 tracking-tight">
+            Remembered your password?
+            <%= link_to "Log in now", login_path,
+                        class: "text-stone-900 font-bold hover:text-stone-600 underline underline-offset-4 transition duration-200 ml-1" %>
+          </p>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

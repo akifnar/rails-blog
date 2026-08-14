@@ -18,9 +18,15 @@
           class: "w-full rounded-xl px-4 py-3.5 text-base bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-stone-900/10 border border-stone-200/40 focus:border-stone-300 transition duration-200" %>
         </div>
 
+
         <div>
-          <%= f.label :password,
-                      class: "block text-[11px] font-bold text-stone-400 uppercase tracking-widest mb-2" %>
+          <div class="flex items-baseline gap-2 mb-2">
+            <%= f.label :password,
+                        class: "text-[11px] font-bold text-stone-400 uppercase tracking-widest" %>
+            <%= link_to "(forgot password)",
+                        new_password_reset_path,
+                        class: "text-xs font-medium text-stone-400 hover:text-stone-200 transition-colors duration-150 underline decoration-stone-600/60 hover:decoration-stone-400 underline-offset-4 cursor-pointer" %>
+          </div>
           <%= f.password_field :password,
                                placeholder: "••••••••",
                                class: "w-full rounded-xl px-4 py-3.5 text-base bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-stone-900/10 border border-stone-200/40 focus:border-stone-300 transition duration-200" %>

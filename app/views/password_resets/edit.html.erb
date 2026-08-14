@@ -1,0 +1,42 @@
+<% provide(:title, 'Reset password') %>
+<% provide(:form_info, 'Reset password') %>
+<% provide(:form_desc, 'Please enter your new password below.') %>
+<% provide(:button_text, 'Update password') %>
+
+<div class="min-h-screen bg-stone-50 py-16 px-4 sm:px-6 lg:px-8 font-sans antialiased text-stone-900">
+  <div class="max-w-md mx-auto bg-white border border-stone-200/60 shadow-sm rounded-lg p-8 sm:p-10 transition-all duration-300">
+
+    <div class="mb-8 text-center">
+      <h1 class="text-2xl font-light tracking-tight text-stone-950"><%= yield(:form_info) %></h1>
+      <p class="mt-1.5 text-xs text-stone-500 font-light tracking-wide"><%= yield(:form_desc) %></p>
+    </div>
+
+    <%= form_with(model: @user, url: password_reset_path(params[:id]), local: true, class: "space-y-6") do |f| %>
+
+      <div class="animate-in fade-in slide-in-from-top-2 duration-200">
+        <%= render 'shared/error_messages', user: @user %>
+      </div>
+
+      <%= hidden_field_tag :email, @user.email %>
+
+      <div class="space-y-4">
+
+        <div class="flex flex-col space-y-1.5">
+          <%= f.label :password, class: "text-[10px] font-bold uppercase tracking-widest text-stone-500 select-none" %>
+          <%= f.password_field :password, placeholder: "••••••••", class: "w-full px-3.5 py-2.5 bg-stone-50/60 border border-stone-200/80 rounded text-sm text-stone-900 placeholder-stone-400/60 focus:outline-none focus:border-stone-950 focus:bg-white hover:border-stone-300 transition-all duration-200" %>
+        </div>
+
+        <div class="flex flex-col space-y-1.5">
+          <%= f.label :password_confirmation, "Confirmation", class: "text-[10px] font-bold uppercase tracking-widest text-stone-500 select-none" %>
+          <%= f.password_field :password_confirmation, placeholder: "••••••••", class: "w-full px-3.5 py-2.5 bg-stone-50/60 border border-stone-200/80 rounded text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:border-stone-950 focus:bg-white hover:border-stone-300 transition-all duration-200" %>
+        </div>
+
+      </div>
+
+      <div class="pt-2">
+        <%= f.submit yield(:button_text), class: "w-full py-3 bg-stone-950 hover:bg-stone-900 active:scale-[0.99] text-white font-medium text-sm tracking-wide rounded shadow-sm transition-all duration-150 cursor-pointer block text-center select-none" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
