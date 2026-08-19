@@ -19,6 +19,8 @@ gem "image_processing", "~> 1.2"
 gem "activemodel-serializers-xml"
 gem 'faker'
 gem 'will_paginate', '~> 4.0'
+gem "active_storage_validations", "~> 1.3"
+gem "cloudinary", "~> 2.0"
 
 # WebSocket (Action Cable) için Redis bağımlılığı
 gem "redis", ">= 4.0.1"
@@ -27,8 +29,7 @@ gem "redis", ">= 4.0.1"
 gem "bcrypt", "~> 3.1.7"
 
 # Windows Uyumluluğu
-gem "tzinfo-data", platforms: %i[ windows jruby ]
-
+gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Boot Hızlandırıcı (Docker'da kilitlenmeye sebep olabileceği için geçici olarak devre dışı bırakıldı)
 gem "bootsnap", require: false
 
@@ -36,7 +37,7 @@ gem "rails-controller-testing"
 
 # GELİŞTİRME VE TEST ORTAMI (ORTAK)
 group :development, :test do
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "debug", platforms: %i[ mingw mswin x64_mingw jruby ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
   # Kitabın renkli test çıktıları için aradığı eksik gem:

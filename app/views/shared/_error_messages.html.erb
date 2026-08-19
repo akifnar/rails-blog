@@ -1,13 +1,13 @@
-<% if user.errors.any? %>
+<% if object.errors.any? %>
   <div id="error_explanation" class="w-full bg-stone-50 border border-stone-200 rounded p-5 mb-6 animate-in fade-in slide-in-from-top-2 duration-300">
 
     <div class="flex items-center gap-2 mb-3 text-[10px] font-bold uppercase tracking-widest text-stone-950 select-none">
       <span class="inline-block w-1.5 h-1.5 rounded-full bg-stone-950 animate-pulse"></span>
-      The form contains <%= pluralize(user.errors.count, "error") %>
+      The form contains <%= pluralize(object.errors.count, "error") %>
     </div>
 
     <ul class="space-y-2 text-xs font-light tracking-wide text-stone-600">
-      <% user.errors.full_messages.each do |msg| %>
+      <% object.errors.full_messages.each do |msg| %>
         <li class="flex items-start gap-2.5">
           <span class="text-stone-400 select-none font-normal">—</span>
           <span class="leading-relaxed"><%= msg %></span>

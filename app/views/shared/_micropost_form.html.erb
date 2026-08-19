@@ -1,0 +1,18 @@
+<section>
+  <%= form_with(model: micropost, class: "bg-white border border-stone-200/80 rounded-2xl p-6 shadow-sm mb-8 transition-all hover:border-stone-300") do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="mb-4">
+      <%= f.text_area :content,
+          placeholder: "Compose new micropost...",
+          rows: 3,
+          class: "w-full rounded-xl border border-stone-200 bg-stone-50/50 p-4 text-sm text-stone-800 placeholder-stone-400 focus:bg-white focus:border-stone-900 focus:outline-none focus:ring-1 focus:ring-stone-900 transition-all resize-none" %>
+    </div>
+    <div class="flex items-center justify-end">
+      <%= f.submit "Post",
+          class: "cursor-pointer rounded-xl bg-stone-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-stone-800 active:bg-stone-950 transition-all" %>
+    </div>
+    <div>
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" ,class: "cursor-pointer" %>
+    </div>
+  <% end %>
+</section>

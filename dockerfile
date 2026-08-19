@@ -9,6 +9,7 @@ RUN apt-get update -qq && \
     build-essential \
     curl \
     git \
+    imagemagick \
     libjemalloc2 \
     libvips \
     libyaml-0-2 \

@@ -13,7 +13,7 @@ module ActiveSupport
     fixtures :all
 
 
-    include ApplicationHelper
+    #include ApplicationHelper
 
     def is_logged_in?
       session[:user_id].present?

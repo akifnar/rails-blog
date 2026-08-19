@@ -2,6 +2,8 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   has_secure_password
 
+  has_many :microposts, dependent: :destroy
+
   before_create :create_activation_digest
   before_save :downcase_email
 
@@ -27,6 +29,10 @@ class User < ApplicationRecord
     self.reset_sent_at < 2.hours.ago
   end
 
+  def feed
+    Micropost.where("user_id = ?", self.id)
+    #alternative : self.microposts
+  end
 
   def remember
     self.remember_token = User.new_token

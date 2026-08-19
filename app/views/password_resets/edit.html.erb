@@ -14,7 +14,7 @@
     <%= form_with(model: @user, url: password_reset_path(params[:id]), local: true, class: "space-y-6") do |f| %>
 
       <div class="animate-in fade-in slide-in-from-top-2 duration-200">
-        <%= render 'shared/error_messages', user: @user %>
+        <%= render 'shared/error_messages', object: @user %>
       </div>
 
       <%= hidden_field_tag :email, @user.email %>

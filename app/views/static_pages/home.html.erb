@@ -1,18 +1,17 @@
-<div class="text-center bg-stone-100 border border-stone-200/60 rounded-2xl p-8 md:p-12 mb-8 mt-12 shadow-sm">
-  <h1 class="text-4xl font-extrabold tracking-tight text-stone-900 mb-4">
-    Welcome to the Sample App
-  </h1>
-
-  <h2 class="text-lg text-stone-600 mb-8 font-normal max-w-xl mx-auto">
-    This is the home page for the Sample App.
-  </h2>
-
-  <%= link_to "Sign up now!",
-              signup_path,
-              class: "inline-block bg-stone-900 hover:bg-stone-800 text-stone-100 font-bold text-sm uppercase tracking-wider px-8 py-3.5 rounded-xl shadow-md hover:shadow-lg transition duration-200 mx-auto active:scale-[0.99] no-underline" %>
-</div>
-
-<div class="flex justify-center md:justify-start mt-8 opacity-80 hover:opacity-100 transition duration-200">
-  <%= link_to image_tag("rails.svg", alt: "Rails logo", width: "150", class: "grayscale contrast-125"),
-              "https://rubyonrails.org/" %>
-</div>
+<% if logged_in? %>
+  <div>
+    <aside>
+      <%= render 'shared/user_info' %>
+      <%= render 'shared/micropost_form', micropost: @micropost %>
+    </aside>
+    <div>
+      <h3 class="text-xl font-bold tracking-tight text-stone-900 mb-4 flex items-center gap-2">
+        <span class="w-1.5 h-5 bg-stone-800 rounded-full inline-block"></span>
+        Micropost Feed
+      </h3>
+      <%= render 'shared/feed', feed_items: @feed_items %>
+    </div>
+  </div>
+<% else %>
+  <%= render 'static_home' %>
+<% end %>
