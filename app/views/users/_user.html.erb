@@ -7,7 +7,6 @@
 
     <div class="grow min-w-0">
       <%= link_to user.name, user, class: "text-sm font-medium text-stone-900 hover:text-stone-600 transition-colors duration-150 truncate block" %>
-      <p class="text-[10px] font-bold uppercase tracking-widest text-stone-400 mt-0.5">Member</p>
     </div>
 
     <% if current_user.admin? && !current_user?(user) %>

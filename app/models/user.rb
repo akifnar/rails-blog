@@ -2,7 +2,18 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   has_secure_password
 
+
   has_many :microposts, dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent: :destroy
+
+  has_many :passive_relationships,  class_name: "Relationship",
+                                    foreign_key: "followed_id",
+                                    dependent: :destroy
+
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   before_create :create_activation_digest
   before_save :downcase_email
@@ -30,8 +41,14 @@ class User < ApplicationRecord
   end
 
   def feed
-    Micropost.where("user_id = ?", self.id)
-    #alternative : self.microposts
+    following_ids ="SELECT followed_id FROM relationships
+                    WHERE follower_id = :user_id"
+
+    Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id",
+                    following_ids: following_ids, user_id: id)
+    #Changed from old since old code was sending 2 seperate requests.
+    #OLD :
+    #Micropost.where("user_id IN (?) OR user_id = ?", self.following_ids, self.id)
   end
 
   def remember
@@ -69,6 +86,18 @@ class User < ApplicationRecord
 
   def send_password_reset_email
     UserMailer.password_reset(self).deliver_now
+  end
+
+  def follow(other_user)
+    self.following << other_user unless self == other_user
+  end
+
+  def unfollow(other_user)
+    self.following.delete(other_user)
+  end
+
+  def following?(other_user)
+    self.following.include?(other_user)
   end
 
   private

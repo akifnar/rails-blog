@@ -1,0 +1,6 @@
+<%= form_with(model: current_user.active_relationships.build, class: "inline") do |f| %>
+  <div>
+    <%= hidden_field_tag :followed_id, @user.id %>
+  </div>
+  <%= f.submit "Follow", class: "inline-flex items-center justify-center px-4 py-2 text-xs font-semibold tracking-wide text-stone-600 bg-stone-100 rounded-xl border border-stone-200/60 shadow-xs hover:bg-stone-200 hover:text-stone-900 active:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 transition-all duration-200 cursor-pointer" %>
+<% end %>

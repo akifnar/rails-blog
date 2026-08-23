@@ -1,0 +1,22 @@
+<% user ||= current_user %>
+<div class="stats flex items-center justify-around py-2">
+  <%= link_to following_user_path(user), class: "group text-center px-4 py-2 rounded-xl transition-colors hover:bg-stone-50" do %>
+    <span id="following" class="block text-lg font-bold tracking-tight text-stone-900 group-hover:text-stone-950">
+      <%= user.following.count %>
+    </span>
+    <span class="text-xs font-medium text-stone-500 uppercase tracking-wider group-hover:text-stone-700">
+      following
+    </span>
+  <% end %>
+
+  <div class="w-px h-8 bg-stone-200/80"></div>
+
+  <%= link_to followers_user_path(user), class: "group text-center px-4 py-2 rounded-xl transition-colors hover:bg-stone-50" do %>
+    <span id="followers" class="block text-lg font-bold tracking-tight text-stone-900 group-hover:text-stone-950">
+      <%= user.followers.count %>
+    </span>
+    <span class="text-xs font-medium text-stone-500 uppercase tracking-wider group-hover:text-stone-700">
+      followers
+    </span>
+  <% end %>
+</div>

@@ -1,25 +1,20 @@
 <li id="micropost-<%= micropost.id %>" class="relative flex items-start gap-3.5 p-4 rounded-xl bg-stone-50/50 border border-stone-100 hover:border-stone-200/80 transition-colors group">
 
-  <!-- Sol: Profil Resmi -->
   <div class="w-10 h-10 bg-stone-100 rounded-full border border-stone-200 overflow-hidden shrink-0 flex items-center justify-center [&>img]:w-full [&>img]:h-full [&>img]:object-cover [&>img]:rounded-full">
     <%= link_to gravatar_for(micropost.user, size: 40), micropost.user %>
   </div>
 
-  <!-- Sağ: İçerik Bloğu -->
   <div class="flex-1 min-w-0 pr-8">
-    <!-- Üst Satır: Kullanıcı Adı + Nokta + Tarih -->
     <div class="flex items-center gap-1.5 mb-1 text-xs">
       <%= link_to micropost.user.name, micropost.user, class: "font-semibold text-stone-900 hover:underline tracking-tight text-sm" %>
       <span class="text-stone-300">·</span>
       <span class="text-stone-400 font-normal"><%= time_ago_in_words(micropost.created_at) %></span>
     </div>
 
-    <!-- Metin -->
     <p class="text-stone-800 text-sm leading-relaxed wrap-break-words mb-2.5">
       <%= micropost.content %>
     </p>
 
-    <!-- Fotoğraf (Metnin Altında) -->
     <% if micropost.image.attached? %>
       <div class="mt-2 mb-1">
         <%= image_tag micropost.image.variant(:display), class: "rounded-xl border border-stone-200/80 shadow-2xs max-w-full h-auto block" %>
@@ -27,7 +22,6 @@
     <% end %>
   </div>
 
-  <!-- Silme Butonu -->
   <% if current_user?(micropost.user) %>
     <div class="absolute top-3.5 right-3.5">
       <%= link_to micropost,
