@@ -15,7 +15,7 @@ gem "tailwindcss-rails", "~> 4.4"
 
 # Veritabanları ve Depolama (Hem Local hem Docker için SQLite3)
 gem "sqlite3", ">= 1.4"
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 2.0"
 gem "activemodel-serializers-xml"
 gem 'faker'
 gem 'will_paginate', '~> 4.0'
