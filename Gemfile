@@ -19,7 +19,7 @@ gem "image_processing", "~> 1.2"
 gem "activemodel-serializers-xml"
 gem 'faker'
 gem 'will_paginate', '~> 4.0'
-gem "active_storage_validations", "~> 1.3"
+gem "active_storage_validations", "~> 4.1"
 gem "cloudinary", "~> 2.0"
 
 # WebSocket (Action Cable) için Redis bağımlılığı
